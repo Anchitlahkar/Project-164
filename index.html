@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Project 163</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+    <script
+        src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+
+    <script src="./JS/shootBall.js"></script>
+</head>
+
+<body>
+    <a-scene id="scene" background="color:grey" inspector-plugin-recast>
+        <a-asset>
+            <a-asset-item id="gun" src="./models/Gun/gun.gltf"></a-asset-item>
+            <a-asset-item class="navigation" src="./Models/navigation/navmesh.gltf"></a-asset-item>
+        </a-asset>
+
+        <a-entity id="camera-rig" movement-controls="speed:0.2; constrainToNavMesh:true;" position="0 0.25 0">
+
+            <a-entity id="camera" camera position="0 1 0" wasd-controls="false"
+                look-controls="pointerLockEnabled: false">
+                <a-cursor id="cursor">
+                </a-cursor>
+                <a-entity id="player_gun" gltf-model="#gun" position="0 -1.36676 -1.12389" rotation="0 180 0"
+                    scale="0.35 0.25242 0.23723" create-ball>
+                </a-entity>
+            </a-entity>
+
+        </a-entity>
+
+
+        <!-- area -->
+        <a-box position="" rotation="-90 0 0" scale="30 30 1" material="; color: #828282" geometry="" id="ground">
+        </a-box>
+
+        <a-box class="wall" position="0 2.08557 -14.96874" rotation="" scale="30 4.06724 1" color="yellow" static-body
+            debug="true" id="wall-1"></a-box>
+
+        <a-box class="wall" position="0 2.08557 14.929" rotation="" scale="30 4.06724 1" color="yellow" static-body
+            id="wall-2"></a-box>
+
+        <a-box class="wall" position="-14.94389 2.08557 0.18545" rotation="0 90 0" scale="30 4.06724 1" color="yellow"
+            static-body id="wall-3"></a-box>
+
+        <a-box class="wall" position="14.94389 2.08557 0.18545" rotation="0 90 0" scale="30 4.06724 1" color="yellow"
+            static-body id="wall-4"></a-box>
+
+
+        <!-- Target -->
+
+        <a-box position="-0.62588 1.39426 -6.86132" rotation="180 0 180" scale="4.64681 1.84135 -0.4853" id="target-1"
+            static-body material="color: white"></a-box>
+
+        <a-box position="-5.77984 1.39426 -6.72189" rotation="180 0 180" scale="4.64681 1.84135 -0.4853" id="target-2"
+            static-body material="color: white"></a-box>
+
+        <a-box position="4.64198 1.39426 -6.861" rotation="180 0 180" scale="4.64681 1.84135 -0.4853" id="target-3"
+            static-body material="color: white"></a-box>
+
+        <a-box position="6.75016 1.39426 -2.90492" rotation="180 90 180" scale="4.64681 1.84135 -0.4853" id="target-4"
+            static-body material="color: white"></a-box>
+
+        <a-box position="6.75016 1.39426 2.53352" rotation="180 90 180" scale="4.64681 1.84135 -0.4853" id="target-5"
+            static-body material="color: white"></a-box>
+
+        <a-box position="-8.36978 1.39426 -2.90492" rotation="180 90 180" scale="4.64681 1.84135 -0.4853" id="target-6"
+            static-body material="color: white"></a-box>
+
+        <a-box position="-8.4194 1.39426 2.55344" rotation="180 90 180" scale="4.64681 1.84135 -0.4853" id="target-7"
+            static-body material="color: white"></a-box>
+
+
+        <a-entity id="Navigation-Mesh" gltf-model="./Models/navigation/navmesh.gltf" visible="false" nav-mesh>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
